@@ -1,25 +1,104 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PokePath" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evN-5S-lIy">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Generate path file"/>
+                                <connections>
+                                    <action selector="generateTrip:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5t3-gy-Jzm"/>
+                                </connections>
+                            </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2PD-Cc-S3D">
+                                <rect key="frame" x="131" y="208" width="240" height="128"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zDh-H4-yDO">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Remove path"/>
+                                <connections>
+                                    <action selector="RemovePath:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SIL-Ni-KNu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="zDh-H4-yDO" firstAttribute="trailing" secondItem="2PD-Cc-S3D" secondAttribute="trailing" id="C7j-n6-Cce"/>
+                            <constraint firstItem="2PD-Cc-S3D" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="GMg-Ht-LOp"/>
+                            <constraint firstAttribute="bottom" secondItem="evN-5S-lIy" secondAttribute="bottom" constant="20" symbolic="YES" id="SGs-7O-xoz">
+                                <variation key="widthClass=compact" constant="39"/>
+                            </constraint>
+                            <constraint firstItem="2PD-Cc-S3D" firstAttribute="centerX" secondItem="evN-5S-lIy" secondAttribute="centerX" id="bWF-GS-0yD">
+                                <variation key="widthClass=compact" constant="118.5"/>
+                            </constraint>
+                            <constraint firstItem="evN-5S-lIy" firstAttribute="top" secondItem="2PD-Cc-S3D" secondAttribute="bottom" constant="27" id="nrV-Te-4B4">
+                                <variation key="widthClass=compact" constant="8"/>
+                            </constraint>
+                            <constraint firstItem="2PD-Cc-S3D" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="qc1-TJ-lr0"/>
+                            <constraint firstItem="2PD-Cc-S3D" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="wBt-k0-ygf"/>
+                            <constraint firstItem="zDh-H4-yDO" firstAttribute="baseline" secondItem="evN-5S-lIy" secondAttribute="baseline" id="xok-Y7-H2n"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="evN-5S-lIy"/>
+                                <exclude reference="zDh-H4-yDO"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="SGs-7O-xoz"/>
+                                <exclude reference="nrV-Te-4B4"/>
+                                <exclude reference="C7j-n6-Cce"/>
+                                <exclude reference="xok-Y7-H2n"/>
+                                <exclude reference="GMg-Ht-LOp"/>
+                                <exclude reference="bWF-GS-0yD"/>
+                                <exclude reference="qc1-TJ-lr0"/>
+                                <exclude reference="wBt-k0-ygf"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="evN-5S-lIy"/>
+                                <include reference="zDh-H4-yDO"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="SGs-7O-xoz"/>
+                                <include reference="nrV-Te-4B4"/>
+                                <include reference="C7j-n6-Cce"/>
+                                <include reference="xok-Y7-H2n"/>
+                                <include reference="GMg-Ht-LOp"/>
+                                <include reference="bWF-GS-0yD"/>
+                                <include reference="qc1-TJ-lr0"/>
+                                <include reference="wBt-k0-ygf"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="PokeMap" destination="2PD-Cc-S3D" id="xvL-La-wwU"/>
+                        <outlet property="RemovePathButton" destination="xok-Y7-H2n" id="Z5u-yU-35b"/>
+                        <outlet property="generateTripButton" destination="evN-5S-lIy" id="pzl-zn-XSk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="304.5" y="364"/>
         </scene>
     </scenes>
 </document>

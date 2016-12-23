@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<gpx creator="Xcode" version="1.1">
+    <wpt lat="49.2812069100484" lon="-123.036195919357">
+        <name>Waypoint: 0</name>
+        <time>2016-11-02T11:59:43Z</time>
+    </wpt>
+    <wpt lat="49.2816577014082" lon="-123.036319226381">
+        <name>Waypoint: 1</name>
+        <time>2016-11-02T12:00:20Z</time>
+    </wpt>
+    <wpt lat="49.2818889608039" lon="-123.035879945107">
+        <name>Waypoint: 2</name>
+        <time>2016-11-02T12:00:49Z</time>
+    </wpt>
+    <wpt lat="49.2815806147019" lon="-123.035825998284">
+        <name>Waypoint: 3</name>
+        <time>2016-11-02T12:01:14Z</time>
+    </wpt>
+    <wpt lat="49.2818889608039" lon="-123.035879945107">
+        <name>Waypoint: 4</name>
+        <time>2016-11-02T12:01:39Z</time>
+    </wpt>
+    <wpt lat="49.2816577014082" lon="-123.036319226381">
+        <name>Waypoint: 5</name>
+        <time>2016-11-02T12:02:08Z</time>
+    </wpt>
+    <wpt lat="49.2812069100484" lon="-123.036195919357">
+        <name>Waypoint: 6</name>
+        <time>2016-11-02T12:02:45Z</time>
+    </wpt>
+</gpx>

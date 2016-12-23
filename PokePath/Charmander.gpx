@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<gpx creator="Xcode" version="1.1">
+    <wpt lat="49.2434609925743" lon="-123.11250678668">
+        <name>Waypoint: 0</name>
+        <time>2016-10-25T21:05:17Z</time>
+    </wpt>
+    <wpt lat="49.2428736016076" lon="-123.114001931679">
+        <name>Waypoint: 1</name>
+        <time>2016-10-25T21:06:48Z</time>
+    </wpt>
+    <wpt lat="49.242594987526" lon="-123.114846908252">
+        <name>Waypoint: 2</name>
+        <time>2016-10-25T21:07:37Z</time>
+    </wpt>
+    <wpt lat="49.2429453342546" lon="-123.115820522169">
+        <name>Waypoint: 3</name>
+        <time>2016-10-25T21:08:35Z</time>
+    </wpt>
+    <wpt lat="49.2428352255506" lon="-123.11641082352">
+        <name>Waypoint: 4</name>
+        <time>2016-10-25T21:09:08Z</time>
+    </wpt>
+    <wpt lat="49.2424047982611" lon="-123.11675580483">
+        <name>Waypoint: 5</name>
+        <time>2016-10-25T21:09:46Z</time>
+    </wpt>
+    <wpt lat="49.2421945882213" lon="-123.116180835981">
+        <name>Waypoint: 6</name>
+        <time>2016-10-25T21:10:21Z</time>
+    </wpt>
+    <wpt lat="49.2423247183514" lon="-123.115490873363">
+        <name>Waypoint: 7</name>
+        <time>2016-10-25T21:10:58Z</time>
+    </wpt>
+    <wpt lat="49.2419042966953" lon="-123.114808576996">
+        <name>Waypoint: 8</name>
+        <time>2016-10-25T21:11:47Z</time>
+    </wpt>
+    <wpt lat="49.242219613273" lon="-123.113873294336">
+        <name>Waypoint: 9</name>
+        <time>2016-10-25T21:12:42Z</time>
+    </wpt>
+    <wpt lat="49.242299693353" lon="-123.112539366607">
+        <name>Waypoint: 10</name>
+        <time>2016-10-25T21:13:52Z</time>
+    </wpt>
+    <wpt lat="49.2421245180092" lon="-123.111220771381">
+        <name>Waypoint: 11</name>
+        <time>2016-10-25T21:15:02Z</time>
+    </wpt>
+    <wpt lat="49.241553942581" lon="-123.112171386544">
+        <name>Waypoint: 12</name>
+        <time>2016-10-25T21:16:10Z</time>
+    </wpt>
+    <wpt lat="49.2417391300654" lon="-123.113175665466">
+        <name>Waypoint: 13</name>
+        <time>2016-10-25T21:17:04Z</time>
+    </wpt>
+    <wpt lat="49.2414488358621" lon="-123.11442526443">
+        <name>Waypoint: 14</name>
+        <time>2016-10-25T21:18:13Z</time>
+    </wpt>
+    <wpt lat="49.2410033810938" lon="-123.115452542106">
+        <name>Waypoint: 15</name>
+        <time>2016-10-25T21:19:18Z</time>
+    </wpt>
+    <wpt lat="49.2414488358621" lon="-123.11442526443">
+        <name>Waypoint: 16</name>
+        <time>2016-10-25T21:20:22Z</time>
+    </wpt>
+    <wpt lat="49.2417391300654" lon="-123.113175665466">
+        <name>Waypoint: 17</name>
+        <time>2016-10-25T21:21:31Z</time>
+    </wpt>
+    <wpt lat="49.241553942581" lon="-123.112171386544">
+        <name>Waypoint: 18</name>
+        <time>2016-10-25T21:22:26Z</time>
+    </wpt>
+    <wpt lat="49.2421245180092" lon="-123.111220771381">
+        <name>Waypoint: 19</name>
+        <time>2016-10-25T21:23:33Z</time>
+    </wpt>
+    <wpt lat="49.242299693353" lon="-123.112539366607">
+        <name>Waypoint: 20</name>
+        <time>2016-10-25T21:24:44Z</time>
+    </wpt>
+    <wpt lat="49.242219613273" lon="-123.113873294336">
+        <name>Waypoint: 21</name>
+        <time>2016-10-25T21:25:53Z</time>
+    </wpt>
+    <wpt lat="49.2419042966953" lon="-123.114808576996">
+        <name>Waypoint: 22</name>
+        <time>2016-10-25T21:26:48Z</time>
+    </wpt>
+    <wpt lat="49.2423247183514" lon="-123.115490873363">
+        <name>Waypoint: 23</name>
+        <time>2016-10-25T21:27:37Z</time>
+    </wpt>
+    <wpt lat="49.2421945882213" lon="-123.116180835981">
+        <name>Waypoint: 24</name>
+        <time>2016-10-25T21:28:15Z</time>
+    </wpt>
+    <wpt lat="49.2424047982611" lon="-123.11675580483">
+        <name>Waypoint: 25</name>
+        <time>2016-10-25T21:28:49Z</time>
+    </wpt>
+    <wpt lat="49.2428352255506" lon="-123.11641082352">
+        <name>Waypoint: 26</name>
+        <time>2016-10-25T21:29:28Z</time>
+    </wpt>
+    <wpt lat="49.2429453342546" lon="-123.115820522169">
+        <name>Waypoint: 27</name>
+        <time>2016-10-25T21:30:00Z</time>
+    </wpt>
+    <wpt lat="49.242594987526" lon="-123.114846908252">
+        <name>Waypoint: 28</name>
+        
+        <time>2016-10-25T21:30:58Z</time>
+    </wpt>
+    <wpt lat="49.2428736016076" lon="-123.114001931679">
+        <name>Waypoint: 29</name>
+        <time>2016-10-25T21:31:48Z</time>
+    </wpt>
+    <wpt lat="49.2434609925743" lon="-123.11250678668">
+        <name>Waypoint: 30</name>
+        <time>2016-10-25T21:33:19Z</time>
+    </wpt>
+</gpx>

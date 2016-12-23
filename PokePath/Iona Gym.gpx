@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<gpx creator="Xcode" version="1.1">
+    <wpt lat="49.2712230722417" lon="-123.250331477415">
+        <name>Waypoint: 0</name>
+        <time>2016-11-10T01:37:43Z</time>
+    </wpt>
+    <wpt lat="49.2710625766431" lon="-123.250696600621">
+        <name>Waypoint: 1</name>
+        <time>2016-11-10T01:38:06Z</time>
+    </wpt>
+    <wpt lat="49.2712230722417" lon="-123.250331477415">
+        <name>Waypoint: 2</name>
+        <time>2016-11-10T01:38:29Z</time>
+    </wpt>
+</gpx>
