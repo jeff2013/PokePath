@@ -1,23 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <gpx creator="Xcode" version="1.1">
-    <wpt lat="49.2921062632975" lon="-123.131640520043">
+    <wpt lat="49.28429193107205" lon="-122.8092739374438">
         <name>Waypoint: 0</name>
-        <time>2016-10-25T22:01:01Z</time>
+        <time>2020-10-17T16:33:06Z</time>
     </wpt>
-    <wpt lat="49.2925502023336" lon="-123.131293805919">
+    <wpt lat="49.28285864515719" lon="-122.80886630703019">
         <name>Waypoint: 1</name>
-        <time>2016-10-25T22:01:41Z</time>
+        <time>2020-10-17T16:34:04Z</time>
     </wpt>
-    <wpt lat="49.2929111006297" lon="-123.131048806911">
+    <wpt lat="49.28289107290095" lon="-122.80572457018393">
         <name>Waypoint: 2</name>
-        <time>2016-10-25T22:02:13Z</time>
+        <time>2020-10-17T16:35:26Z</time>
     </wpt>
-    <wpt lat="49.2925502023336" lon="-123.131293805919">
+    <wpt lat="49.28259273685407" lon="-122.80184711015212">
         <name>Waypoint: 3</name>
-        <time>2016-10-25T22:02:44Z</time>
+        <time>2020-10-17T16:37:08Z</time>
     </wpt>
-    <wpt lat="49.2921062632975" lon="-123.131640520043">
+    <wpt lat="49.28289107290095" lon="-122.80572457018393">
         <name>Waypoint: 4</name>
-        <time>2016-10-25T22:03:24Z</time>
+        <time>2020-10-17T16:38:49Z</time>
+    </wpt>
+    <wpt lat="49.28285864515719" lon="-122.80886630703019">
+        <name>Waypoint: 5</name>
+        <time>2020-10-17T16:40:11Z</time>
+    </wpt>
+    <wpt lat="49.28429193107205" lon="-122.8092739374438">
+        <name>Waypoint: 6</name>
+        <time>2020-10-17T16:41:10Z</time>
     </wpt>
 </gpx>

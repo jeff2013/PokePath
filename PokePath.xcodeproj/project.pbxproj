@@ -18,7 +18,6 @@
 		1FD842771D392409006846AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FD842751D392409006846AC /* LaunchScreen.storyboard */; };
 		1FD842821D392409006846AC /* PokePathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD842811D392409006846AC /* PokePathTests.swift */; };
 		1FD8428D1D392409006846AC /* PokePathUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD8428C1D392409006846AC /* PokePathUITests.swift */; };
-		1FD8429D1D39A637006846AC /* AEXML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD8429C1D39A637006846AC /* AEXML.swift */; };
 		1FFC7FDC1D415CB200F2BDA0 /* PokeStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC7FDB1D415CB200F2BDA0 /* PokeStop.swift */; };
 		B0CA75127B9CFA8C89F8D357 /* Pods_PokePath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C8E907BCF8DF62A0B8284E8 /* Pods_PokePath.framework */; };
 /* End PBXBuildFile section */
@@ -61,7 +60,6 @@
 		1FD842881D392409006846AC /* PokePathUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokePathUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FD8428C1D392409006846AC /* PokePathUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokePathUITests.swift; sourceTree = "<group>"; };
 		1FD8428E1D392409006846AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1FD8429C1D39A637006846AC /* AEXML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AEXML.swift; sourceTree = "<group>"; };
 		1FFC7FDB1D415CB200F2BDA0 /* PokeStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokeStop.swift; sourceTree = "<group>"; };
 		2C8E907BCF8DF62A0B8284E8 /* Pods_PokePath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokePath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33E82D75AA31BA9B1163AE96 /* Pods-PokePath.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokePath.release.xcconfig"; path = "Pods/Target Support Files/Pods-PokePath/Pods-PokePath.release.xcconfig"; sourceTree = "<group>"; };
@@ -71,8 +69,7 @@
 		5F74E5951DCA6FD900B350BD /* magmar.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = magmar.gpx; sourceTree = "<group>"; };
 		5F74E5961DCB003000B350BD /* random.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = random.gpx; sourceTree = "<group>"; };
 		5F7D3A0F1DC521CF00856E26 /* Magikarp.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Magikarp.gpx; sourceTree = "<group>"; };
-		5F8A87DC1DDABF0E003CA5D9 /* pacific bell gym.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "pacific bell gym.gpx"; sourceTree = "<group>"; };
-		5FFAB9BE1DD4331500A277C3 /* UBC Beaty Gym.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "UBC Beaty Gym.gpx"; path = "../../../../Bureau/UBC Beaty Gym.gpx"; sourceTree = "<group>"; };
+		5F8A87DC1DDABF0E003CA5D9 /* Lafarge.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Lafarge.gpx; sourceTree = "<group>"; };
 		5FFAB9BF1DD4773D00A277C3 /* Irving Gym.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Irving Gym.gpx"; sourceTree = "<group>"; };
 		5FFAB9C01DD4779800A277C3 /* Iona Gym.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Iona Gym.gpx"; sourceTree = "<group>"; };
 		5FFAB9C11DD477D100A277C3 /* Remember Gym.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Remember Gym.gpx"; sourceTree = "<group>"; };
@@ -142,8 +139,7 @@
 				1FD842751D392409006846AC /* LaunchScreen.storyboard */,
 				1FD842781D392409006846AC /* Info.plist */,
 				1FD842701D392408006846AC /* PokePath.xcdatamodeld */,
-				5F8A87DC1DDABF0E003CA5D9 /* pacific bell gym.gpx */,
-				1FD8429C1D39A637006846AC /* AEXML.swift */,
+				5F8A87DC1DDABF0E003CA5D9 /* Lafarge.gpx */,
 				1F99F5141D39B99B00845A6C /* PathLocation.gpx */,
 				5F74E5941DC9C6F400B350BD /* QEPGym.gpx */,
 				5F74E5951DCA6FD900B350BD /* magmar.gpx */,
@@ -152,7 +148,6 @@
 				5FFAB9C01DD4779800A277C3 /* Iona Gym.gpx */,
 				5FFAB9C11DD477D100A277C3 /* Remember Gym.gpx */,
 				5FFAB9BF1DD4773D00A277C3 /* Irving Gym.gpx */,
-				5FFAB9BE1DD4331500A277C3 /* UBC Beaty Gym.gpx */,
 				1FFC7FDB1D415CB200F2BDA0 /* PokeStop.swift */,
 				5F4E79611DC3BC40008C2154 /* ubc.gpx */,
 				5F7D3A0F1DC521CF00856E26 /* Magikarp.gpx */,
@@ -210,7 +205,6 @@
 				1FD842631D392408006846AC /* Frameworks */,
 				1FD842641D392408006846AC /* Resources */,
 				1D06D22F78A77F1651641024 /* [CP] Embed Pods Frameworks */,
-				2D141BEF74F635EE2497925A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -269,7 +263,7 @@
 				TargetAttributes = {
 					1FD842651D392408006846AC = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = Q7V5PH8THE;
+						DevelopmentTeam = 3C3C8R4N7F;
 						LastSwiftMigration = 0800;
 					};
 					1FD8427C1D392409006846AC = {
@@ -289,6 +283,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -338,28 +333,22 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PokePath/Pods-PokePath-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AEXML/AEXML.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleAPIClient/GoogleAPIClient.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEXML.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClient.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PokePath/Pods-PokePath-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2D141BEF74F635EE2497925A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PokePath/Pods-PokePath-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PokePath/Pods-PokePath-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		66936D44EA32FA745B5D7E9B /* [CP] Check Pods Manifest.lock */ = {
@@ -368,13 +357,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PokePath-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -385,7 +377,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FD8426C1D392408006846AC /* ViewController.swift in Sources */,
-				1FD8429D1D39A637006846AC /* AEXML.swift in Sources */,
 				1FD8426A1D392408006846AC /* AppDelegate.swift in Sources */,
 				1FD842721D392408006846AC /* PokePath.xcdatamodeld in Sources */,
 				1FFC7FDC1D415CB200F2BDA0 /* PokeStop.swift in Sources */,
@@ -480,7 +471,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -520,7 +511,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -534,7 +525,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = Q7V5PH8THE;
+				DEVELOPMENT_TEAM = 3C3C8R4N7F;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/GoogleAPIClient",
@@ -542,11 +533,11 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos/GTMSessionFetcher",
 				);
 				INFOPLIST_FILE = PokePath/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jklabs.PokePath;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -556,7 +547,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = Q7V5PH8THE;
+				DEVELOPMENT_TEAM = UVDMJPX2TM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/GoogleAPIClient",
@@ -564,11 +555,11 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos/GTMSessionFetcher",
 				);
 				INFOPLIST_FILE = PokePath/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jklabs.PokePath;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
