@@ -1,4 +1,5 @@
 PODS:
+  - AEXML (4.6.0)
   - GoogleAPIClient/Core (1.0.4):
     - GTMSessionFetcher (~> 1.1)
   - GoogleAPIClient/Drive (1.0.4):
@@ -13,14 +14,23 @@ PODS:
     - GTMSessionFetcher/Core (= 1.1.4)
 
 DEPENDENCIES:
+  - AEXML
   - GoogleAPIClient/Drive (~> 1.0.4)
   - GTMOAuth2 (~> 1.1.1)
 
+SPEC REPOS:
+  trunk:
+    - AEXML
+    - GoogleAPIClient
+    - GTMOAuth2
+    - GTMSessionFetcher
+
 SPEC CHECKSUMS:
-  GoogleAPIClient: 4dedb6af613eb7d171814c343f8a82ee5411e13b
-  GTMOAuth2: bdb12f3e0d2110bfe585f6151230b883beb4d042
+  AEXML: 2fbb73d8724797ed2cde888731e176fa4d44dd83
+  GoogleAPIClient: bde49b31072d3c296d051f58c37b27a66ca45936
+  GTMOAuth2: 278f6207215687232851fe33bd47269664028988
   GTMSessionFetcher: 174bc61d5238f81f9ddb807b0b0170420f67de85
 
-PODFILE CHECKSUM: 9f3050cc6d619663c2082b51f46a3e1cad616557
+PODFILE CHECKSUM: 456c94e0f41367bcc46681672d29695959d92e75
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.9.3

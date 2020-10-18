@@ -12,6 +12,7 @@ import CoreLocation
 import CoreFoundation
 import GoogleAPIClient
 import GTMOAuth2
+import AEXML
 
 class ViewController: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate, CLLocationManagerDelegate {
     
@@ -39,7 +40,8 @@ class ViewController: UIViewController, MKMapViewDelegate, UIGestureRecognizerDe
     override func viewDidLoad() {
         super.viewDidLoad()
         PokeMap.delegate = self
-        gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.addAnnotation(_:)))
+        
+        gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(addAnnotation(gestureRecognizer:)))
         gestureRecognizer?.minimumPressDuration = 1.0
         PokeMap.addGestureRecognizer(gestureRecognizer!)
         locationManager.delegate = self;
@@ -50,7 +52,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UIGestureRecognizerDe
         PokeMap.showsUserLocation = true
         
         //GoogleAPIstuff
-        if let auth = GTMOAuth2ViewControllerTouch.authForGoogleFromKeychainForName(kKeyChainItemName, clientID: kClientID, clientSecret: nil){
+        if let auth = GTMOAuth2ViewControllerTouch.authForGoogleFromKeychain(forName: kKeyChainItemName, clientID: kClientID, clientSecret: nil){
             service.authorizer = auth
         }
     
@@ -59,7 +61,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UIGestureRecognizerDe
     }
     func centerMapOnLocation(location: CLLocation) {
         let regionRadius: CLLocationDistance = 1000
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,regionRadius * 2.0, regionRadius * 2.0)
+        let coordinateRegion = MKCoordinateRegion(center: location.coordinate,latitudinalMeters: regionRadius * 2.0, longitudinalMeters: regionRadius * 2.0)
         PokeMap.setRegion(coordinateRegion, animated: true)
     }
 
@@ -68,156 +70,157 @@ class ViewController: UIViewController, MKMapViewDelegate, UIGestureRecognizerDe
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidAppear(animated: Bool) {
-        if let authorizer = service.authorizer, let canAuth = authorizer.canAuthorize    where canAuth{
-            fetchFiles()
-        }else{
-            presentViewController(
-                createAuthController(),
-                animated: true,
-                completion: nil
-            )
-        }
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        if let authorizer = service.authorizer, let canAuth = authorizer.canAuthorize, canAuth{
+//            //fetchFiles()
+//            print("Maybe fetch files here?")
+//        }else{
+////            present(
+////                createAuthController(),
+////                animated: true,
+////                completion: nil
+////            )
+//        }
+//    }
     
     private func createAuthController() -> GTMOAuth2ViewControllerTouch {
-        let scopeString = scopes.joinWithSeparator(" ")
+        let scopeString = scopes.joined(separator: " ")
         return GTMOAuth2ViewControllerTouch(
             scope: scopeString,
             clientID: kClientID,
             clientSecret: nil,
             keychainItemName: kKeyChainItemName,
             delegate: self,
-            finishedSelector: #selector(ViewController.viewController(_:finishedWithAuth:error:))
+            finishedSelector: #selector(authFinishedController(vc:finishedWithAuth:error:))
         )
     }
     
-    func viewController(vc : UIViewController,
+    @objc func authFinishedController(vc : UIViewController,
                         finishedWithAuth authResult : GTMOAuth2Authentication, error : NSError?) {
         
         if let error = error {
             service.authorizer = nil
-            showAlert("Authentication Error", message: error.localizedDescription)
+            showAlert(title: "Authentication Error", message: error.localizedDescription)
             return
         }
         
         service.authorizer = authResult
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
-    func fetchFiles(){
-        //print("Fetching files")
-        let query = GTLQueryDrive.queryForFilesList()
-        query.q = "name = 'pokestop.xml'"
-        query.pageSize = 1
-        query.fields = "nextPageToken, files(id, name)"
-        service.executeQuery(query, delegate: self, didFinishSelector: #selector(self.displayResultWithTicket(_:finishedWithObject:error:)))
-    }
+//    func fetchFiles(){
+//        //print("Fetching files")
+//        let query = GTLQueryDrive.queryForFilesList()
+//        query?.q = "name = 'pokestop.xml'"
+//        query?.pageSize = 1
+//        query?.fields = "nextPageToken, files(id, name)"
+//        service.executeQuery(query as! GTLQueryProtocol, delegate: self, didFinishSelector: #selector(self.displayResultWithTicket(_:finishedWithObject:error:)))
+//    }
     
-    func displayResultWithTicket(ticket: GTLServiceTicket, finishedWithObject response: GTLDriveFileList, error: NSError?){
-        if let error = error{
-            showAlert("Error", message: error.localizedDescription)
-            return
-        }
-        var fileString = ""
-        if let files = response.files    where !files.isEmpty{
-            fileString += "Files: \n"
-            let file = files[0] as! GTLDriveFile
-            fileString += "\(file.name) (\(file.identifier))\n"
-            //print(file.JSONString())
-            let url = NSString(format: "https://www.googleapis.com/drive/v2/files/%@?alt=media", file.identifier)
-            //print(url)
-            let fetcherService = service.fetcherService
-            fetcherService.authorizer = service.authorizer
-            let fetcher = fetcherService.fetcherWithURLString(url as String)
-            
-            fetcher.service = fetcherService
-            fetcher.beginFetchWithCompletionHandler({ (data, error) in
-                if error == nil{
-                    //print("Retrieved file contents")
-                    do {
-                        let pokeDoc = try AEXMLDocument(xmlData: data!)
-
-                        for document in pokeDoc.root.children{
-                            for placemark in document.children{
-                                if placemark.name == "Placemark"{
-                                    self.pokeStops.append(placemark)
-                                }
-                            }
-                            
-                        }
-                        self.addPokeStops()
-                    }catch{
-                        print("AEXML parse error")
-                    }
-                }else{
-                    print("Error occured retrieving file contents")
-                    print(error?.description)
-                }
-            })
-            for file in files as! [GTLDriveFile]{
-                fileString += "\(file.name) (\(file.identifier))\n"
-            }
-            //print(fileString)
-        }else{
-            fileString = "No files found."
-            //print(fileString)
-        }
-    }
+//    func displayResultWithTicket(ticket: GTLServiceTicket, finishedWithObject response: GTLDriveFileList, error: NSError?){
+//        if let error = error{
+//            showAlert(title: "Error", message: error.localizedDescription)
+//            return
+//        }
+//        var fileString = ""
+//        if let files = response.files, !files.isEmpty{
+//            fileString += "Files: \n"
+//            let file = files[0] as! GTLDriveFile
+//            fileString += "\(file.name) (\(file.identifier))\n"
+//            //print(file.JSONString())
+//            let url = NSString(format: "https://www.googleapis.com/drive/v2/files/%@?alt=media", file.identifier)
+//            //print(url)
+//            let fetcherService = service.fetcherService
+//            fetcherService?.authorizer = service.authorizer
+//            let fetcher = fetcherService?.fetcher(withURLString: url as String)
+//
+//            fetcher!.service = fetcherService!
+//            fetcher!.beginFetchWithCompletionHandler({ (data, error) in
+//                if error == nil{
+//                    //print("Retrieved file contents")
+//                    do {
+//                        let pokeDoc = try AEXMLDocument(xmlData: data!)
+//
+//                        for document in pokeDoc.root.children{
+//                            for placemark in document.children{
+//                                if placemark.name == "Placemark"{
+//                                    self.pokeStops.append(placemark)
+//                                }
+//                            }
+//
+//                        }
+//                        self.addPokeStops()
+//                    }catch{
+//                        print("AEXML parse error")
+//                    }
+//                }else{
+//                    print("Error occured retrieving file contents")
+//                    print(error?.description)
+//                }
+//            })
+//            for file in files as! [GTLDriveFile]{
+//                fileString += "\(file.name) (\(file.identifier))\n"
+//            }
+//            //print(fileString)
+//        }else{
+//            fileString = "No files found."
+//            //print(fileString)
+//        }
+//    }
     
-    func stringFromTo(stringToIndex: String, fromIndex: String.Index, toIndex: String.Index)->(String, String){
-        return (stringToIndex.substringWithRange(Range<String.Index>(fromIndex..<toIndex)), stringToIndex.substringWithRange(Range<String.Index>(toIndex.advancedBy(1)..<stringToIndex.characters.endIndex)))
-    }
+//    func stringFromTo(stringToIndex: String, fromIndex: String.Index, toIndex: String.Index)->(String, String){
+//        return (stringToIndex.substringWithRange(Range<String.Index>(fromIndex..<toIndex)), stringToIndex.substringWithRange(Range<String.Index>(toIndex.advancedBy(1)..<stringToIndex.characters.endIndex)))
+//    }
 
     func showAlert(title : String, message: String) {
         let alert = UIAlertController(
             title: title,
             message: message,
-            preferredStyle: UIAlertControllerStyle.Alert
+            preferredStyle: UIAlertController.Style.alert
         )
         let ok = UIAlertAction(
             title: "OK",
-            style: UIAlertActionStyle.Default,
+            style: UIAlertAction.Style.default,
             handler: nil
         )
         alert.addAction(ok)
-        presentViewController(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     //MARK
     
-    func addAnnotation(gestureRecognizer: UIGestureRecognizer){
-        if UIGestureRecognizerState.Began == gestureRecognizer.state{
+    @objc func addAnnotation(gestureRecognizer: UIGestureRecognizer){
+        if UIGestureRecognizer.State.began == gestureRecognizer.state{
             // Finger is pressed and gesture recognizer is at the end state
-            let touchPoint = gestureRecognizer.locationInView(PokeMap)
-            let newCoordinates = PokeMap.convertPoint(touchPoint, toCoordinateFromView: PokeMap)
+            let touchPoint = gestureRecognizer.location(in: PokeMap)
+            let newCoordinates = PokeMap.convert(touchPoint, toCoordinateFrom: PokeMap)
             let annotation = MKPointAnnotation()
             annotation.coordinate = newCoordinates
             PokeMap.addAnnotation(annotation)
             tripCoordinates.append(newCoordinates)
             //need the coordinates in reverse so the trip can be made into a loop, tracing ones steps back to the original location
-            tripCoordinatesR.insert(newCoordinates, atIndex: tripCoordinates.startIndex)
+            tripCoordinatesR.insert(newCoordinates, at: tripCoordinates.startIndex)
         }
     }
     
-    func addPokeStops(){
-        for placemark in pokeStops{
-            if let coordinateString = placemark["Point"]["coordinates"].value{
-                let lat = self.stringFromTo(coordinateString, fromIndex: coordinateString.characters.startIndex, toIndex: coordinateString.characters.indexOf(",")!)
-                let lon = self.stringFromTo(lat.1, fromIndex: lat.1.characters.startIndex, toIndex: lat.1.characters.indexOf(",")!)
-                let loc = CLLocationCoordinate2DMake(Double(lon.0)!, Double(lat.0)!)
-                //let loc = CLLocationCoordinate2DMake(-80.4866794, 43.4910451)
-//                PokeMap.addOverlay(PokeStop(title: "hallo", locationName: "PokeStop", coordinate: loc, boundingMapRect: MKMapRect(origin: MKMapPointForCoordinate(loc), size: MKMapSize(width: 10000.0, height: 1000.0))))
-                PokeMap.addAnnotation(PokeStop(title: "HALLO", locationName: "PokeStop", coordinate: loc))
-            }
-        }
-    }
+//    func addPokeStops(){
+//        for placemark in pokeStops{
+//            if let coordinateString = placemark["Point"]["coordinates"].value{
+//                let lat = self.stringFromTo(coordinateString, fromIndex: coordinateString.characters.startIndex, toIndex: coordinateString.characters.indexOf(",")!)
+//                let lon = self.stringFromTo(lat.1, fromIndex: lat.1.characters.startIndex, toIndex: lat.1.characters.indexOf(",")!)
+//                let loc = CLLocationCoordinate2DMake(Double(lon.0)!, Double(lat.0)!)
+//                //let loc = CLLocationCoordinate2DMake(-80.4866794, 43.4910451)
+////                PokeMap.addOverlay(PokeStop(title: "hallo", locationName: "PokeStop", coordinate: loc, boundingMapRect: MKMapRect(origin: MKMapPointForCoordinate(loc), size: MKMapSize(width: 10000.0, height: 1000.0))))
+//                PokeMap.addAnnotation(PokeStop(title: "HALLO", locationName: "PokeStop", coordinate: loc))
+//            }
+//        }
+//    }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? PokeStop {
             let identifier = "PokeSop"
             var view: MKAnnotationView
-            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
+            if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
                 as? MKPinAnnotationView { // 2
                 dequeuedView.annotation = annotation
                 view = dequeuedView
@@ -229,17 +232,17 @@ class ViewController: UIViewController, MKMapViewDelegate, UIGestureRecognizerDe
                 view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 view.canShowCallout = false
                 view.calloutOffset = CGPoint(x: -5, y: 5)
-                view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
+                view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
                 //view.pinTintColor = UIColor.blueColor()
-                let image = UIImage(named: "Pokestop")?.CGImage
-                view.image = UIImage(CGImage: image!, scale: 40.0, orientation: UIImageOrientation.Up)
+                let image = UIImage(named: "Pokestop")?.cgImage
+                view.image = UIImage(cgImage: image!, scale: 40.0, orientation: UIImage.Orientation.up)
                 view.annotation = annotation
             }
             return view
         }else{
             let identifier = "Pin"
             var view: MKAnnotationView
-            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView{
+            if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView{
                 dequeuedView.annotation = annotation
                 view = dequeuedView
                 view.annotation = annotation
@@ -269,14 +272,19 @@ class ViewController: UIViewController, MKMapViewDelegate, UIGestureRecognizerDe
     
     
     
-    @IBAction func generateTrip(sender: AnyObject) {
+    @IBAction func generateTrip(_ sender: UIButton!) {
+        if (tripCoordinatesR.isEmpty) {
+            return
+        }
+        
         tripCoordinatesR.removeFirst()
         var gpxFile = AEXMLDocument()
         let gpxAttributes = ["version" : "1.1", "creator" : "Xcode"]
         let gpx = gpxFile.addChild(name: "gpx", attributes: gpxAttributes)
-        gpxFile = addGPXPoints(gpxFile, tripCoordinates: tripCoordinates, gpx: gpx)
-        gpxFile = addGPXPoints(gpxFile, tripCoordinates: tripCoordinatesR, gpx: gpx)
-        print(gpxFile.xmlString)
+        gpxFile = addGPXPoints(gpxFile: gpxFile, tripCoordinates: tripCoordinates, gpx: gpx)
+        gpxFile = addGPXPoints(gpxFile: gpxFile, tripCoordinates: tripCoordinatesR, gpx: gpx)
+        print("SHOULD PRINT A GPX FILE?")
+        print(gpxFile.xml)
         //cleanup work
         lastCoordinate = nil
         tripCoordinates = []
@@ -285,7 +293,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UIGestureRecognizerDe
         wayPointCount = 0
     }
 
-    @IBAction func RemovePath(sender: AnyObject) {
+    @IBAction func RemovePath(_ sender: AnyObject) {
         PokeMap.removeAnnotations(PokeMap.annotations);
         tripCoordinates = [];
         tripCoordinatesR = [];
@@ -296,7 +304,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UIGestureRecognizerDe
             let wpxAttributes = ["lat":"\(annotationPoint.latitude.description)", "lon":"\(annotationPoint.longitude.description)"]
             let wayPoint = gpx.addChild(name: "wpt", attributes: wpxAttributes)
             wayPoint.addChild(name: "name", value: "Waypoint: \(wayPointCount)")
-            wayPoint.addChild(name: "time", value: calculateTime(annotationPoint))
+            wayPoint.addChild(name: "time", value: calculateTime(currentAnnotation: annotationPoint))
             lastCoordinate = annotationPoint
             wayPointCount += 1
         }
@@ -304,26 +312,26 @@ class ViewController: UIViewController, MKMapViewDelegate, UIGestureRecognizerDe
     }
     
     func calculateTime(currentAnnotation: CLLocationCoordinate2D) -> String{
-        var timeInterval = NSTimeInterval()
+        var timeInterval = TimeInterval()
         var timeItTakes = 1.0
         if let _=lastCoordinate{
             //distance is set in KM
-            let currentMapPoint = MKMapPointForCoordinate(currentAnnotation)
-            let lastMapPoint = MKMapPointForCoordinate(lastCoordinate!)
-            let distance = MKMetersBetweenMapPoints(currentMapPoint, lastMapPoint)/1000
+            let currentMapPoint = MKMapPoint(currentAnnotation)
+            let lastMapPoint = MKMapPoint(lastCoordinate!)
+            let distance = currentMapPoint.distance(to: lastMapPoint)/1000
             //max walking speed in pokemon Go is reportedly ~24km/h so i'm assuming 20 is safe enough
             //timeItTakes should produce the number of seconds it takes to travel the distance between points when walking at 14km/h
-            timeItTakes = (distance/5)*60*60
+            timeItTakes = (distance/5)*60*30
             //print("Time taken in min \(timeItTakes/60)")
         }
-        timeInterval = timeInterval.advancedBy(timeItTakes)
-        currentDate = currentDate.dateByAddingTimeInterval(timeInterval)
-        let dateFormatter = NSDateFormatter()
+        timeInterval = timeInterval.advanced(by: timeItTakes)
+        currentDate = currentDate.addingTimeInterval(timeInterval)
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-        return dateFormatter.stringFromDate(currentDate)
+        return dateFormatter.string(from: currentDate as Date)
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
         
         let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)

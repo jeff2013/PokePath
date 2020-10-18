@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<gpx creator="Xcode" version="1.1">
+    <wpt lat="49.28831700262436" lon="-122.78955710351886">
+        <name>Waypoint: 0</name>
+        <time>2020-10-15T18:46:50Z</time>
+    </wpt>
+    <wpt lat="49.28705484856175" lon="-122.79013949526107">
+        <name>Waypoint: 1</name>
+        <time>2020-10-15T18:47:42Z</time>
+    </wpt>
+    <wpt lat="49.28610514823192" lon="-122.79005495452431">
+        <name>Waypoint: 2</name>
+        <time>2020-10-15T18:48:20Z</time>
+    </wpt>
+    <wpt lat="49.28549242863381" lon="-122.79046826479299">
+        <name>Waypoint: 3</name>
+        <time>2020-10-15T18:48:47Z</time>
+    </wpt>
+    <wpt lat="49.28531473852618" lon="-122.78920954715657">
+        <name>Waypoint: 4</name>
+        <time>2020-10-15T18:49:21Z</time>
+    </wpt>
+    <wpt lat="49.28519219325125" lon="-122.78807294391775">
+        <name>Waypoint: 5</name>
+        <time>2020-10-15T18:49:51Z</time>
+    </wpt>
+    <wpt lat="49.28597035057364" lon="-122.78681422628132">
+        <name>Waypoint: 6</name>
+        <time>2020-10-15T18:50:36Z</time>
+    </wpt>
+    <wpt lat="49.28718964325512" lon="-122.78725571679561">
+        <name>Waypoint: 7</name>
+        <time>2020-10-15T18:51:26Z</time>
+    </wpt>
+    <wpt lat="49.288653980040245" lon="-122.78774417438582">
+        <name>Waypoint: 8</name>
+        <time>2020-10-15T18:52:26Z</time>
+    </wpt>
+    <wpt lat="49.288672360560355" lon="-122.7862694081999">
+        <name>Waypoint: 9</name>
+        <time>2020-10-15T18:53:04Z</time>
+    </wpt>
+    <wpt lat="49.289940599896944" lon="-122.78735904436274">
+        <name>Waypoint: 10</name>
+        <time>2020-10-15T18:54:02Z</time>
+    </wpt>
+    <wpt lat="49.288672360560355" lon="-122.7862694081999">
+        <name>Waypoint: 11</name>
+        <time>2020-10-15T18:55:01Z</time>
+    </wpt>
+    <wpt lat="49.288653980040245" lon="-122.78774417438582">
+        <name>Waypoint: 12</name>
+        <time>2020-10-15T18:55:39Z</time>
+    </wpt>
+    <wpt lat="49.28718964325512" lon="-122.78725571679561">
+        <name>Waypoint: 13</name>
+        <time>2020-10-15T18:56:39Z</time>
+    </wpt>
+    <wpt lat="49.28597035057364" lon="-122.78681422628132">
+        <name>Waypoint: 14</name>
+        <time>2020-10-15T18:57:29Z</time>
+    </wpt>
+    <wpt lat="49.28519219325125" lon="-122.78807294391775">
+        <name>Waypoint: 15</name>
+        <time>2020-10-15T18:58:14Z</time>
+    </wpt>
+    <wpt lat="49.28531473852618" lon="-122.78920954715657">
+        <name>Waypoint: 16</name>
+        <time>2020-10-15T18:58:44Z</time>
+    </wpt>
+    <wpt lat="49.28549242863381" lon="-122.79046826479299">
+        <name>Waypoint: 17</name>
+        <time>2020-10-15T18:59:18Z</time>
+    </wpt>
+    <wpt lat="49.28610514823192" lon="-122.79005495452431">
+        <name>Waypoint: 18</name>
+        <time>2020-10-15T18:59:45Z</time>
+    </wpt>
+    <wpt lat="49.28705484856175" lon="-122.79013949526107">
+        <name>Waypoint: 19</name>
+        <time>2020-10-15T19:00:23Z</time>
+    </wpt>
+    <wpt lat="49.28831700262436" lon="-122.78955710351886">
+        <name>Waypoint: 20</name>
+        <time>2020-10-15T19:01:15Z</time>
+    </wpt>
+</gpx>
